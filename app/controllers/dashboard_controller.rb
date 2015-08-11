@@ -7,8 +7,5 @@ class DashboardController < ApplicationController
   private
 
     def authorize
-      unless true
-        redirect_to root_path
-      end
     end
 end

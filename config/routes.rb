@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   get 'dashboard/index', as: "dashboard", path: "dashboard"
 
-  post 'home/sign_in'
+  post 'home/sign_in', as: "sign_in"
 end
