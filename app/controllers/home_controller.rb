@@ -1,5 +1,8 @@
 class HomeController < ApplicationController
   def index
+    if session[:password] == ENV["USERNAME"]
+      redirect_to dashboard_path
+    end
   end
 
   def sign_in
