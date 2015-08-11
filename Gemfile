@@ -22,7 +22,7 @@ group :development, :test do
   gem 'better_errors'
   gem "binding_of_caller"
 
-  gem 'rspec'
+  gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl'
   gem 'capybara'
 end
