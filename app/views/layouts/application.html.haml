@@ -9,4 +9,7 @@
   %body
     .container-fluid
       .row{class: "#{params[:controller]}"}
-        = yield
+        = render "dashboard/shared/header" if params[:controller] != "home"
+
+        .container
+          = yield
