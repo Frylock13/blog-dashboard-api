@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @dashboard_post.title
+%p
+  %b Short:
+  = @dashboard_post.short
+%p
+  %b Desc:
+  = @dashboard_post.desc
+%p
+  %b Topic:
+  = @dashboard_post.topic
+%p
+  %b Image:
+  = @dashboard_post.image
+
+= link_to 'Edit', edit_dashboard_post_path(@dashboard_post)
+\|
+= link_to 'Back', dashboard_posts_path

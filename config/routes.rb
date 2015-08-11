@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :dashboard do
+    resources :posts
+  end
   root 'home#index'
 
   scope path: '/dashboard', controller: "dashboard" do

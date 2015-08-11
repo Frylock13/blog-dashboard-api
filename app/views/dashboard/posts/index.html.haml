@@ -1,0 +1,29 @@
+%h1 Listing dashboard_posts
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th Short
+      %th Desc
+      %th Topic
+      %th Image
+      %th
+      %th
+      %th
+
+  %tbody
+    - @dashboard_posts.each do |dashboard_post|
+      %tr
+        %td= dashboard_post.title
+        %td= dashboard_post.short
+        %td= dashboard_post.desc
+        %td= dashboard_post.topic
+        %td= dashboard_post.image
+        %td= link_to 'Show', dashboard_post
+        %td= link_to 'Edit', edit_dashboard_post_path(dashboard_post)
+        %td= link_to 'Destroy', dashboard_post, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Post', new_dashboard_post_path

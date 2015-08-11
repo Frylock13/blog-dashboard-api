@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
-  before_action :authorize
+  before_action :authenticate
 
   def index
   end
