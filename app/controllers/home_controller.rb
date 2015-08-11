@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   end
 
   def sign_in
-    if params[:password] == ENV["BLOG_PASSWORD"]
+    if params[:password] == ENV["USERNAME"]
       session[:password] = params[:password]
       redirect_to dashboard_path
     else
