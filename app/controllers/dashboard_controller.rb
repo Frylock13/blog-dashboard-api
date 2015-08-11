@@ -3,4 +3,9 @@ class DashboardController < ApplicationController
 
   def index
   end
+
+  def logout
+    session.delete(:password)
+    redirect_to root_path
+  end
 end

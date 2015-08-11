@@ -8,5 +8,5 @@
     = csrf_meta_tags
   %body
     .container-fluid
-      .row
+      .row{class: "#{params[:controller]}"}
         = yield
