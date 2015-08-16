@@ -16,6 +16,7 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bootswatch-rails'
 gem 'bootsy'
 gem 'paperclip'
+gem 'pg_search'
 
 group :development, :test do
   gem 'byebug'

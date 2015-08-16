@@ -10,3 +10,9 @@
 
       %ul.nav.navbar-nav.navbar-right
         %li= link_to "Logout", logout_path
+
+      .navbar-form.navbar-left
+        = form_tag(dashboard_posts_path, method: :get) do
+          .form-group
+            = text_field_tag :query, nil, class: "form-control", placeholder: "Search"
+            = submit_tag 'Search', class: "btn btn-default"

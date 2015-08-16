@@ -1,0 +1,25 @@
+%table
+  %thead
+    %tr
+      %th Title
+      %th Short
+      %th Desc
+      %th Topic
+      %th Image
+      %th Status
+      %th
+      %th
+      %th
+
+  %tbody
+    - @dashboard_posts.each do |post|
+      %tr
+        %td= post.title
+        %td= post.short
+        %td= post.desc
+        %td= post.topic
+        %td= image_tag post.image.url(:thumb)
+        %td= get_status(post.published)
+        %td= link_to 'Show', post
+        %td= link_to 'Edit', edit_dashboard_post_path(post)
+        %td= link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }

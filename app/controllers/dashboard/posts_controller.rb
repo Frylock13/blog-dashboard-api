@@ -5,7 +5,15 @@ class Dashboard::PostsController < ApplicationController
   # GET /dashboard/posts
   # GET /dashboard/posts.json
   def index
-    @dashboard_posts = Dashboard::Post.all
+    if params[:query].present?
+      @dashboard_posts = Dashboard::Post.search(params[:query])
+    else
+      @dashboard_posts = Dashboard::Post.published
+    end
+  end
+
+  def unpublished
+    @dashboard_posts = Dashboard::Post.unpublished
   end
 
   # GET /dashboard/posts/1
