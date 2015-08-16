@@ -5,7 +5,6 @@ class CreateDashboardPosts < ActiveRecord::Migration
       t.string :short
       t.text :desc
       t.string :topic
-      t.string :image
 
       t.timestamps null: false
     end

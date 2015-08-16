@@ -15,6 +15,7 @@ gem 'capistrano', github: 'capistrano/capistrano', ref: '96a16'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bootswatch-rails'
 gem 'bootsy'
+gem 'paperclip'
 
 group :development, :test do
   gem 'byebug'
