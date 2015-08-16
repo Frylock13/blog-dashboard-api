@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+
   namespace :dashboard do
     resources :posts
   end
