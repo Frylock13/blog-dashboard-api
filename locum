@@ -1,4 +1,0 @@
-kill -QUIT `cat /var/run/unicorn/hosting_expaenergy/apis.expaenergy.pid`
-bundle exec unicorn_rails -Dc /etc/unicorn/apis.expaenergy.rb
-tail -f log/unicorn.stderr.log
-tail -f log/production.log

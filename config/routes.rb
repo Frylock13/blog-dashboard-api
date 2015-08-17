@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :posts do
       collection do
         get :unpublished
-        get 'topic/:name' => "posts#topic"
+        get 'tags' => "posts#tags"
       end
     end
   end

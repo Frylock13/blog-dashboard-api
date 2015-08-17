@@ -16,6 +16,10 @@ class Dashboard::PostsController < ApplicationController
     @dashboard_posts = Dashboard::Post.unpublished
   end
 
+  def tags
+    @tags = Dashboard::Post.pluck(:tag).uniq
+  end
+
   # GET /dashboard/posts/1
   # GET /dashboard/posts/1.json
   def show
