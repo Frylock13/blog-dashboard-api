@@ -8,7 +8,7 @@ class Dashboard::PostsController < ApplicationController
     if params[:query].present?
       @dashboard_posts = Dashboard::Post.search(params[:query])
     else
-      @dashboard_posts = Dashboard::Post.published
+      @dashboard_posts = Dashboard::Post.published.order(created_at: :desc)
     end
   end
 
@@ -17,7 +17,11 @@ class Dashboard::PostsController < ApplicationController
   end
 
   def tags
-    @tags = Dashboard::Post.pluck(:tag).uniq
+    @tags = Dashboard::Post.pluck(:tag).uniq.sort
+  end
+
+  def set_tag
+    @dashboard_posts = Dashboard::Post.tag(params[:name]).published
   end
 
   # GET /dashboard/posts/1

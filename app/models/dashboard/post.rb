@@ -7,4 +7,5 @@ class Dashboard::Post < ActiveRecord::Base
 
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where(published: false) }
+  scope :tag, -> (name) { where(:tag => name) }
 end
