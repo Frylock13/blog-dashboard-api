@@ -3,8 +3,8 @@
     %tr
       %th Title
       %th Short
-      %th Desc
-      %th Topic
+      %th Content
+      %th Tag
       %th Image
       %th Status
       %th
@@ -16,8 +16,8 @@
       %tr
         %td= post.title
         %td= post.short
-        %td= post.desc
-        %td= post.topic
+        %td= post.content
+        %td= post.tag
         %td= image_tag post.image.url(:thumb)
         %td= get_status(post.published)
         %td= link_to 'Show', post

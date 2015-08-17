@@ -6,15 +6,15 @@ RSpec.describe "dashboard/posts/index", type: :view do
       Dashboard::Post.create!(
         :title => "Title",
         :short => "Short",
-        :desc => "MyText",
-        :topic => "Topic",
+        :content => "MyText",
+        :tag => "Topic",
         :image => "Image"
       ),
       Dashboard::Post.create!(
         :title => "Title",
         :short => "Short",
-        :desc => "MyText",
-        :topic => "Topic",
+        :content => "MyText",
+        :tag => "Topic",
         :image => "Image"
       )
     ])

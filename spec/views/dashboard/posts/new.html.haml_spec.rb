@@ -5,8 +5,8 @@ RSpec.describe "dashboard/posts/new", type: :view do
     assign(:dashboard_post, Dashboard::Post.new(
       :title => "MyString",
       :short => "MyString",
-      :desc => "MyText",
-      :topic => "MyString",
+      :content => "MyText",
+      :tag => "MyString",
       :image => "MyString"
     ))
   end

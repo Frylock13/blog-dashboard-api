@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 
   namespace :dashboard do
     resources :posts do
-      get :unpublished, on: :collection
+      collection do
+        get :unpublished
+        get 'topic/:name' => "posts#topic"
+      end
     end
   end
   root 'home#index'

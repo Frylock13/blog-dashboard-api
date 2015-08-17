@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20150816221243) do
   create_table "dashboard_posts", force: :cascade do |t|
     t.string   "title"
     t.string   "short"
-    t.text     "desc"
-    t.string   "topic"
+    t.text     "content"
+    t.string   "tag"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.string   "image_file_name"

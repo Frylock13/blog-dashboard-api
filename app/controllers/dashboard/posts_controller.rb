@@ -82,6 +82,6 @@ class Dashboard::PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dashboard_post_params
-      params.require(:dashboard_post).permit(:title, :short, :desc, :topic, :image)
+      params.require(:dashboard_post).permit(:title, :short, :content, :tag, :image)
     end
 end

@@ -3,7 +3,7 @@ class Dashboard::Post < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   include PgSearch
-  pg_search_scope :search, against: [:title, :short, :desc]
+  pg_search_scope :search, against: [:title, :short, :content]
 
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where(published: false) }

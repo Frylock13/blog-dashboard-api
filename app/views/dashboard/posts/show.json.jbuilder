@@ -1,1 +1,1 @@
-json.extract! @dashboard_post, :id, :title, :short, :desc, :topic, :image, :created_at, :updated_at
+json.extract! @dashboard_post, :id, :title, :short, :content, :tag, :image, :created_at, :updated_at
