@@ -1,5 +1,6 @@
 class Dashboard::PostsController < ApplicationController
   before_action :set_dashboard_post, only: [:show, :edit, :update, :destroy]
+  before_action :get_tags, only: [:tags, :new, :edit]
   before_action :authenticate, unless: :json_request?
 
   # GET /dashboard/posts
@@ -17,7 +18,6 @@ class Dashboard::PostsController < ApplicationController
   end
 
   def tags
-    @tags = Dashboard::Post.select(:tag).uniq
   end
 
   def set_tag
@@ -32,7 +32,6 @@ class Dashboard::PostsController < ApplicationController
   # GET /dashboard/posts/new
   def new
     @dashboard_post = Dashboard::Post.new
-    @tags = Dashboard::Post.select(:tag).uniq
   end
 
   # GET /dashboard/posts/1/edit
@@ -87,6 +86,10 @@ class Dashboard::PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_dashboard_post
       @dashboard_post = Dashboard::Post.find(params[:id])
+    end
+
+    def get_tags
+      @tags = Dashboard::Post.select(:tag).uniq
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
