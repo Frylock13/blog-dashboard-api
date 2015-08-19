@@ -10,10 +10,10 @@ class Dashboard::Post < ActiveRecord::Base
   scope :tag, -> (name) { where(:tag => name) }
 
   def switch_status
-    if self.published == true
-      self.update_attribute(:published, false)
+    if published == true
+      update_attribute(:published, false)
     else
-      self.update_attribute(:published, true)
+      update_attribute(:published, true)
     end
   end
 end
