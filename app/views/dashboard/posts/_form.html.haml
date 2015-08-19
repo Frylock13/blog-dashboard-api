@@ -18,6 +18,7 @@
   .form-group
     = f.label :tag
     = f.text_field :tag, class: "form-control"
+    = f.select :tag, @tags.map { |t| [t.tag] }, { include_blank: true }, { class: 'chosen-select' }  
   .form-group
     = f.label :image
     = f.file_field :image, class: "form-control"

@@ -17,7 +17,7 @@ class Dashboard::PostsController < ApplicationController
   end
 
   def tags
-    @tags = Dashboard::Post.pluck(:tag).uniq.sort
+    @tags = Dashboard::Post.select(:tag).uniq
   end
 
   def set_tag
@@ -32,6 +32,7 @@ class Dashboard::PostsController < ApplicationController
   # GET /dashboard/posts/new
   def new
     @dashboard_post = Dashboard::Post.new
+    @tags = Dashboard::Post.select(:tag).uniq
   end
 
   # GET /dashboard/posts/1/edit

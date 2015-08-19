@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'faker'
+gem "compass-rails", github: "Compass/compass-rails", branch: "master"
 gem 'unicorn'
 gem 'capistrano', github: 'capistrano/capistrano', ref: '96a16'
 gem 'bootstrap-sass', '~> 3.3.5'
@@ -17,6 +18,7 @@ gem 'bootswatch-rails'
 gem 'bootsy'
 gem 'paperclip'
 gem 'pg_search'
+gem 'chosen-rails'
 
 group :development, :test do
   gem 'byebug'

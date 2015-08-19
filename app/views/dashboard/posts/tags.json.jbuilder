@@ -1,3 +1,3 @@
 json.array!(@tags) do |tag|
-  json.name tag
+  json.extract! tag, :tag
 end
