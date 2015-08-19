@@ -24,6 +24,13 @@ class Dashboard::PostsController < ApplicationController
     @dashboard_posts = Dashboard::Post.tag(params[:name]).published
   end
 
+  def switch_status
+    @post = Dashboard::Post.find(params[:post_id])
+    @post.switch_status
+    
+    redirect_to :back
+  end
+
   # GET /dashboard/posts/1
   # GET /dashboard/posts/1.json
   def show

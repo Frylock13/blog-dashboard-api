@@ -12,11 +12,13 @@ Rails.application.routes.draw do
         get 'tags' => "posts#tags"
         get 'tags/:name' => "posts#set_tag"
       end
+
+      get 'switch_status'
     end
   end
 
   scope path: '/dashboard', controller: "dashboard" do
-    get 'index', as: "dashboard"
-    get 'logout', as: "logout"
+    get 'index', as: 'dashboard'
+    get 'logout', as: 'logout'
   end
 end
