@@ -53,14 +53,10 @@ module Dashboard
     # PATCH/PUT /dashboard/posts/1
     # PATCH/PUT /dashboard/posts/1.json
     def update
-      respond_to do |format|
-        if @post.update(post_params)
-          format.html { redirect_to dashboard_posts_path, notice: 'Post was successfully updated.' }
-          format.json { render :show, status: :ok, location: @post }
-        else
-          format.html { render :edit }
-          format.json { render json: @post.errors, status: :unprocessable_entity }
-        end
+      if @post.update(post_params)
+        redirect_to dashboard_posts_path
+      else
+        redirect_to :back
       end
     end
 
@@ -90,7 +86,7 @@ module Dashboard
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def post_params
-        params.require(:post).permit(:title, :short, :content, :tag, :image)
+        params.require(:post).permit(:title, :short, :content, :tag, :image, :name)
       end
   end
 end

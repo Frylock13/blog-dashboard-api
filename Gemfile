@@ -21,6 +21,7 @@ gem 'pg_search'
 gem 'chosen-rails'
 gem 'meta_request'
 gem "sorcery"
+gem 'friendly_id', '~> 5.1.0'
 
 group :development, :test do
   gem 'byebug'
