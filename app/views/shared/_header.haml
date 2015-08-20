@@ -1,0 +1,9 @@
+%nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      = link_to "Multi blog dashboard", "#", class: "navbar-brand"
+
+    .navbar-collapse
+      %ul.nav.navbar-nav.navbar-right
+        %li= link_to "Login", login_path
+        %li= link_to "Register", signup_path

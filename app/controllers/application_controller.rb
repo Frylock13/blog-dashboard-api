@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def authenticate
-    redirect_to root_path unless session[:password] == ENV["USERNAME"]
+  def not_authenticated
+    redirect_to login_url, :alert => "First login to access this page."
   end
 end

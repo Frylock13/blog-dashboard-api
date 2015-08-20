@@ -1,11 +1,6 @@
 class DashboardController < ApplicationController
-  before_action :authenticate
+  before_filter :require_login
 
   def index
-  end
-
-  def logout
-    session.delete(:password)
-    redirect_to root_path
   end
 end

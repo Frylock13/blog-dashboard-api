@@ -19,6 +19,8 @@ gem 'bootsy'
 gem 'paperclip'
 gem 'pg_search'
 gem 'chosen-rails'
+gem 'meta_request'
+gem "sorcery"
 
 group :development, :test do
   gem 'byebug'

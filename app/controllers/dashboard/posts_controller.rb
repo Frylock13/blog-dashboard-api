@@ -1,7 +1,7 @@
 class Dashboard::PostsController < ApplicationController
   before_action :set_dashboard_post, only: [:show, :edit, :update, :destroy]
   before_action :get_tags, only: [:tags, :new, :edit]
-  before_action :authenticate, unless: :json_request?
+  before_filter :require_login, unless: :json_request?
 
   # GET /dashboard/posts
   # GET /dashboard/posts.json

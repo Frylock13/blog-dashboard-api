@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  post 'home/sign_in', as: "sign_in"
+  get "logout" => "sessions#destroy", :as => "logout"
+  get "login" => "sessions#new", :as => "login"
+  get "signup" => "users#new", :as => "signup"
 
   namespace :dashboard do
     resources :posts do
@@ -19,6 +21,8 @@ Rails.application.routes.draw do
 
   scope path: '/dashboard', controller: "dashboard" do
     get 'index', as: 'dashboard'
-    get 'logout', as: 'logout'
   end
+
+  resources :users
+  resources :sessions
 end
