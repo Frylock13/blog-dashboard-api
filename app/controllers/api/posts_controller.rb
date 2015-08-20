@@ -10,7 +10,7 @@ class API::PostsController < ApplicationController
   end
 
   def tags
-    @tags = @user.posts.select(:tag).uniq
+    @tags = @user.posts.published.select(:tag).uniq
   end
 
   def show_tag
