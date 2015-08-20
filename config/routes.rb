@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   get 'dashboard' => 'dashboard#index'
 
   namespace :dashboard, path: 'dashboard' do
-
     resources :posts do
       collection do
         get :unpublished
@@ -21,6 +20,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users
-  resources :sessions
+  resources :users, only: [:new, :create]
+  resources :sessions, only: [:new, :create, :destroy]
 end

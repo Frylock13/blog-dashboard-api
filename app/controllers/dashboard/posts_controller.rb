@@ -7,11 +7,13 @@ module Dashboard
     # GET /dashboard/posts
     # GET /dashboard/posts.json
     def index
-      if params[:query].present?
-        @posts = Post.search(params[:query])
-      else
+      if json_request?
         @posts = Post.published.order(created_at: :desc)
+      else
+        @posts = current_user.posts.published.order(created_at: :desc)
       end
+      
+      @posts = Post.search(params[:query]) if params[:query].present?
     end
 
     def unpublished
@@ -49,7 +51,7 @@ module Dashboard
     # POST /dashboard/posts
     # POST /dashboard/posts.json
     def create
-      @post = Post.new(post_params)
+      @post = current_user.posts.new(post_params)
 
       respond_to do |format|
         if @post.save
@@ -93,7 +95,7 @@ module Dashboard
       end
       # Use callbacks to share common setup or constraints between actions.
       def set_post
-        @post = Post.find(params[:id])
+        @post = current_user.posts.find(params[:id])
       end
 
       def get_tags

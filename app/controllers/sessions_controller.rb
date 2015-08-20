@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     
     if user
       auto_login(user)
-      redirect_back_or_to dashboard_path, :notice => "Logged in!"
+      redirect_back_or_to dashboard_posts_path, :notice => "Logged in!"
     else
       flash.now.alert = "Email or password was invalid"
       render :new
