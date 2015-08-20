@@ -5,7 +5,7 @@ class CreateDashboardPosts < ActiveRecord::Migration
       t.string :short
       t.text :content
       t.string :tag
-      t.boolean :published, default: true
+      t.integer :status, default: 1
       t.integer :dashboard_posts
       t.timestamps null: false
     end

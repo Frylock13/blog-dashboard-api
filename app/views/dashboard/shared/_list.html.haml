@@ -20,7 +20,7 @@
         %td= post.tag
         %td= image_tag post.image.url(:thumb)
         %td
-          %input{:name => "switchName", :type => "checkbox", :value => "true", :data => {:selected => "#{post.published}", :id => "#{post.id}"}, class: "switcher", id: "switcher"}/
+          %input{:name => "switchName", :type => "checkbox", :value => "true", :data => {:selected => "#{check_status(post.status)}", :id => "#{post.id}"}, class: "switcher", id: "switcher"}/
         %td= link_to 'Show', dashboard_post_path(id: post)
         %td= link_to 'Edit', edit_dashboard_post_path(post)
         %td= link_to 'Destroy', dashboard_post_path(id: post), :method => :delete, :data => { :confirm => 'Are you sure?' }

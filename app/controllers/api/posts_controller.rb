@@ -1,4 +1,4 @@
-class Api::PostsController < ApplicationController
+class API::PostsController < ApplicationController
   before_filter :set_user
 
   def index

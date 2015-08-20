@@ -43,14 +43,10 @@ module Dashboard
     def create
       @post = current_user.posts.new(post_params)
 
-      respond_to do |format|
-        if @post.save
-          format.html { redirect_to dashboard_posts_path, notice: 'Post was successfully created.' }
-          format.json { render :show, status: :created, location: @post }
-        else
-          format.html { render :new }
-          format.json { render json: @post.errors, status: :unprocessable_entity }
-        end
+      if @post.save
+        redirect_to unpublished_dashboard_posts_path
+      else
+        redirect_to :back
       end
     end
 
@@ -71,10 +67,10 @@ module Dashboard
     # DELETE /dashboard/posts/1
     # DELETE /dashboard/posts/1.json
     def destroy
-      @post.destroy
-      respond_to do |format|
-        format.html { redirect_to dashboard_posts_path, notice: 'Post was successfully destroyed.' }
-        format.json { head :no_content }
+      if @post.archived!
+        redirect_to dashboard_posts_path
+      else
+        redirect_to :back
       end
     end
 

@@ -4,18 +4,16 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
 
+  enum status: %i(published unpublished archived)
+
   include PgSearch
   pg_search_scope :search, against: [:title, :short, :content]
 
-  scope :published, -> { where(published: true) }
-  scope :unpublished, -> { where(published: false) }
+  scope :published, -> { where(status: 0) }
+  scope :unpublished, -> { where(status: 1) }
   scope :tag, -> (name) { where(:tag => name) }
 
   def switch_status
-    if published == true
-      update_attribute(:published, false)
-    else
-      update_attribute(:published, true)
-    end
+    published? ? unpublished! : published! # :D
   end
 end
