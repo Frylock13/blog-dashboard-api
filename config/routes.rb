@@ -9,14 +9,25 @@ Rails.application.routes.draw do
   get 'dashboard' => 'dashboard#index'
 
   namespace :dashboard, path: 'dashboard' do
+    get '/' => 'dashboard#index'
+
     resources :posts do
       collection do
         get :unpublished
-        get 'tags' => "posts#tags"
-        get 'tags/:name' => "posts#set_tag"
       end
 
       get 'switch_status'
+    end
+  end
+
+  namespace :api, :defaults => {:format => :json} do
+    resources :users do
+      resources :posts, only: [:index, :show] do
+        collection do
+          get 'tags' => "posts#tags"
+          get 'tags/:name' => "posts#show_tag"
+        end
+      end
     end
   end
 

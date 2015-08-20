@@ -1,30 +1,20 @@
 module Dashboard
   class PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :update, :destroy]
-    before_action :get_tags, only: [:tags, :new, :edit]
-    before_filter :require_login, unless: :json_request?
+    before_action :get_tags, only: [:new, :edit]
 
     # GET /dashboard/posts
     # GET /dashboard/posts.json
     def index
-      if json_request?
-        @posts = Post.published.order(created_at: :desc)
+      if params[:query].present?
+        @posts = current_user.posts.search(params[:query])
       else
         @posts = current_user.posts.published.order(created_at: :desc)
       end
-      
-      @posts = Post.search(params[:query]) if params[:query].present?
     end
 
     def unpublished
-      @posts = Post.unpublished
-    end
-
-    def tags
-    end
-
-    def set_tag
-      @posts = Post.tag(params[:name]).published
+      @posts = current_user.posts.unpublished
     end
 
     def switch_status

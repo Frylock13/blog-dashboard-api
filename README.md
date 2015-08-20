@@ -5,11 +5,11 @@ Export your password in terminal `export USERNAME=something` or set it in the *c
 
 ### API
 ```
-/posts.json
-/posts/:id.json
+/api/users/:id/posts.json
+/api/users/:id/posts/:id.json
 ```
 
 ```
-/posts/tags.json
-/posts/tags/:name.json
+/api/users/:id/posts/tags.json
+/api/users/:id/posts/tags/:name.json
 ```
