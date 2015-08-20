@@ -1,9 +1,9 @@
-= form_for @dashboard_post do |f|
-  - if @dashboard_post.errors.any?
+= form_for [:dashboard, @post] do |f|
+  - if @post.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@dashboard_post.errors.count, "error")} prohibited this dashboard_post from being saved:"
+      %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
       %ul
-        - @dashboard_post.errors.full_messages.each do |msg|
+        - @post.errors.full_messages.each do |msg|
           %li= msg
 
   .form-group

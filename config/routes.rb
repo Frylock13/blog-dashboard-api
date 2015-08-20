@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
+  get 'dashboard' => 'dashboard#index'
 
-  namespace :dashboard do
+  namespace :dashboard, path: 'dashboard' do
+
     resources :posts do
       collection do
         get :unpublished
@@ -17,10 +19,6 @@ Rails.application.routes.draw do
 
       get 'switch_status'
     end
-  end
-
-  scope path: '/dashboard', controller: "dashboard" do
-    get 'index', as: 'dashboard'
   end
 
   resources :users

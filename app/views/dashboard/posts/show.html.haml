@@ -2,20 +2,20 @@
 
 %p
   %b Title:
-  = @dashboard_post.title
+  = @post.title
 %p
   %b Short:
-  = @dashboard_post.short
+  = @post.short
 %p
   %b Content:
-  = @dashboard_post.content
+  = @post.content
 %p
   %b Topic:
-  = @dashboard_post.tag
+  = @post.tag
 %p
   %b Image:
-  = image_tag @dashboard_post.image.url(:medium)
+  = image_tag @post.image.url(:medium)
 
-= link_to 'Edit', edit_dashboard_post_path(@dashboard_post)
+= link_to 'Edit', edit_dashboard_post_path(@post)
 \|
 = link_to 'Back', dashboard_posts_path

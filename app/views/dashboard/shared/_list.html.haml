@@ -12,7 +12,7 @@
       %th
 
   %tbody
-    - @dashboard_posts.each do |post|
+    - @posts.each do |post|
       %tr
         %td= post.title
         %td= post.short
@@ -21,9 +21,9 @@
         %td= image_tag post.image.url(:thumb)
         %td
           %input{:name => "switchName", :type => "checkbox", :value => "true", :data => {:selected => "#{post.published}", :id => "#{post.id}"}, class: "switcher", id: "switcher"}/
-        %td= link_to 'Show', post
+        %td= link_to 'Show', dashboard_post_path(id: post)
         %td= link_to 'Edit', edit_dashboard_post_path(post)
-        %td= link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Destroy', dashboard_post_path(id: post), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 :javascript
   $(function () {
