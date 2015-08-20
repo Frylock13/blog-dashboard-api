@@ -2,7 +2,7 @@ class API::PostsController < ApplicationController
   before_filter :set_user
 
   def index
-    @posts = @user.posts
+    @posts = @user.posts.published
   end
 
   def show
