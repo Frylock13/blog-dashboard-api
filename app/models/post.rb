@@ -11,6 +11,7 @@ class Post < ActiveRecord::Base
 
   scope :published, -> { where(status: 0) }
   scope :unpublished, -> { where(status: 1) }
+  scope :archived, -> { where(status: 2) }
   scope :tag, -> (name) { where(:tag => name) }
 
   def switch_status

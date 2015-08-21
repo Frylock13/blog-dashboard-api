@@ -17,6 +17,10 @@ module Dashboard
       @posts = current_user.posts.unpublished
     end
 
+    def archived
+      @posts = current_user.posts.archived
+    end
+
     def switch_status
       @post = Post.find(params[:post_id])
       @post.switch_status

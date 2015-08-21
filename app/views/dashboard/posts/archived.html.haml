@@ -1,0 +1,9 @@
+= render 'dashboard/shared/nav_list'
+
+%h1 Listing archived posts
+
+= render 'dashboard/shared/list', collection: @dashboard_posts
+
+%br
+
+= link_to 'New Post', new_dashboard_post_path

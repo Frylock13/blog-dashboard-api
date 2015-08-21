@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
 
-  root 'home#index'
+  root 'dashboard#index'
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :posts do
       collection do
         get :unpublished
+        get :archived
       end
 
       get 'switch_status'
