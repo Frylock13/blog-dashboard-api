@@ -22,12 +22,10 @@ Rails.application.routes.draw do
 
   namespace :api, :defaults => {:format => :json} do
     resources :users do
-      resources :posts, only: [:index, :show] do
-        collection do
-          get 'tags' => "posts#tags"
-          get 'tags/:name' => "posts#tag_posts"
-        end
-      end
+      get 'tags' => "tags#index"
+      get 'tags/:name' => "tags#show"
+
+      resources :posts, only: [:index, :show]
     end
   end
 
