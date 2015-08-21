@@ -6,14 +6,14 @@ class API::PostsController < ApplicationController
   end
 
   def show
-    @post = @user.posts.find(params[:id])
+    @post = @user.posts.published.find(params[:id])
   end
 
   def tags
     @tags = @user.posts.published.select(:tag).uniq
   end
 
-  def show_tag
+  def tag_posts
     @posts = @user.posts.tag(params[:name]).published
   end
 

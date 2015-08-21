@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       resources :posts, only: [:index, :show] do
         collection do
           get 'tags' => "posts#tags"
-          get 'tags/:name' => "posts#show_tag"
+          get 'tags/:name' => "posts#tag_posts"
         end
       end
     end
