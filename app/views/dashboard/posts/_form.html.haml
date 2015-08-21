@@ -17,10 +17,18 @@
     = f.bootsy_area :content, class: "form-control", rows: 20
   .form-group
     = f.label :tag
-    = f.text_field :tag, class: "form-control"
-    = f.select :tag, @tags.map { |t| [t.tag] }, { include_blank: true }, { class: 'chosen-select' }  
+    = f.select :tag, @tags.map { |t| [t.tag] }, { include_blank: true }, { class: 'chosen-select' }
+    = link_to('or new tag', 'javascript:;', id: "new-tag")
+    = f.text_field :tag, class: 'form-control new-tag', disabled: true
   .form-group
     = f.label :image
     = f.file_field :image, class: "form-control"
   .actions
     = f.submit 'Save', class: "btn btn-success"
+
+:javascript
+  $('#new-tag').click(function() {
+    $('.new-tag').prop('disabled', false);
+    $('.new-tag').css("display", "block");
+    console.log("sdf");
+  });
