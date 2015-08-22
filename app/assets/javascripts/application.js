@@ -15,4 +15,5 @@
 //= require bootstrap
 //= require bootsy
 //= require selectize
+//= require switcher
 //= require_tree .
