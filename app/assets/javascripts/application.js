@@ -14,5 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require bootsy
-//= require chosen-jquery
+//= require selectize
 //= require_tree .
