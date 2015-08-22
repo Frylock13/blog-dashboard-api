@@ -2,7 +2,7 @@ class API::TagsController < ApplicationController
   before_filter :set_user
 
   def index
-    @tags = @user.posts.published.select(:tag).uniq
+    @tags = @user[:tags].split(",")
   end
 
   def show

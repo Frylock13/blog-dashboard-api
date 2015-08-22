@@ -3,13 +3,18 @@ Rails.application.routes.draw do
 
   root 'dashboard#index'
 
-  get "logout" => "sessions#destroy", :as => "logout"
-  get "login" => "sessions#new", :as => "login"
-  get "signup" => "users#new", :as => "signup"
+  get 'logout' => 'sessions#destroy', :as => 'logout'
+  get 'login' => 'sessions#new', :as => 'login'
+  get 'signup' => 'users#new', :as => 'signup'
   get 'dashboard' => 'dashboard#index'
 
   namespace :dashboard, path: 'dashboard' do
     get '/' => 'dashboard#index'
+
+    namespace :settings, path: 'settings' do
+      get :index
+      post :set_tags
+    end
 
     resources :posts do
       collection do
@@ -23,8 +28,8 @@ Rails.application.routes.draw do
 
   namespace :api, :defaults => {:format => :json} do
     resources :users do
-      get 'tags' => "tags#index"
-      get 'tags/:name' => "tags#show"
+      get 'tags' => 'tags#index'
+      get 'tags/:name' => 'tags#show'
 
       resources :posts, only: [:index, :show]
     end

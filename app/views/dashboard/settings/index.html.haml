@@ -1,0 +1,24 @@
+%h1 Tags
+
+- if @tags.present?
+  %p= @user.tags
+- else
+  %p No tags
+
+= form_tag dashboard_settings_set_tags_path do
+  .form-group
+    = text_field_tag :tags, nil, id: "input-tags", value: @user.tags, placeholder: "Tag name"
+  .actions
+    = submit_tag "Save", class: "btn btn-success"
+
+:javascript
+  $('#input-tags').selectize({
+      delimiter: ',',
+      persist: false,
+      create: function(input) {
+          return {
+              value: input,
+              text: input
+          }
+      }
+  });
