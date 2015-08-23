@@ -2,6 +2,7 @@ module Dashboard
   class PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :update, :destroy]
     before_action :get_tags, only: [:new, :edit]
+    before_action :tags_array, only: [:update, :create]
 
     # GET /dashboard/posts
     # GET /dashboard/posts.json
@@ -47,7 +48,8 @@ module Dashboard
     def create
       @post = current_user.posts.new(post_params)
 
-      if @post.save
+      if @post.save!
+        @post.update_tags(@tags_array)
         redirect_to unpublished_dashboard_posts_path
       else
         redirect_to :back
@@ -57,7 +59,7 @@ module Dashboard
     # PATCH/PUT /dashboard/posts/1
     # PATCH/PUT /dashboard/posts/1.json
     def update
-      if @post.update(post_params)
+      if @post.update(post_params) && @post.update_tags(@tags_array)
         redirect_to dashboard_posts_path
       else
         redirect_to :back
@@ -90,7 +92,11 @@ module Dashboard
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def post_params
-        params.require(:post).permit(:title, :short, :content, :tags, :image, :name)
+        params.require(:post).permit(:title, :short, :content, :image, :name)
+      end
+
+      def tags_array
+        @tags_array = params[:post][:tags].split(",")
       end
   end
 end

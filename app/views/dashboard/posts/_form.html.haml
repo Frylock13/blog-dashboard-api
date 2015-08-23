@@ -17,7 +17,7 @@
     = f.bootsy_area :content, class: "form-control", rows: 20
   .form-group
     = f.label :tags, "Tags"
-    = f.text_field :tags, id: "input-tags"
+    = f.text_field :tags, id: "input-tags", value: "#{get_tags(@post.tags)}"
   .form-group
     = f.label :image
     = f.file_field :image, class: "form-control"

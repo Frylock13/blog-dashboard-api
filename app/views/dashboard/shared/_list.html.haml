@@ -15,7 +15,7 @@
       %tr
         %td= post.title
         %td= post.short
-        %td= post.tags
+        %td= post.tags.join(",")
         %td= image_tag post.image.url(:thumb)
         %td
           %input{:name => "switchName", :type => "checkbox", :value => "true", :data => {:selected => "#{check_status(post.status)}", :id => "#{post.id}"}, class: "switcher", id: "switcher"}/
