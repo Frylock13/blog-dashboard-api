@@ -1,15 +1,19 @@
 ## README
 
 ### API
-You can find useful information in API page.
+`:name` - it's your name in system. You can find it on API page.
 
-`:name` - is your name in system.
-```
-/api/users/:name/posts.json
-/api/users/:name/posts/:id.json
-```
+#### Posts
+  ##### Get posts list
+  `/api/users/:name/posts`
 
-```
-/api/users/:name/tags.json
-/api/users/:name/tags/:name.json
-```
+  ##### Get specific post
+  `/api/users/:name/posts/:id`
+
+  ##### Search posts by tags
+  `/api/users/:name/posts?tags=rails,ruby,js`
+
+
+#### Users
+  ##### Tags of user(on Settings page):
+  `/api/users/:name/tags`

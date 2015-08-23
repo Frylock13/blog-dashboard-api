@@ -30,7 +30,6 @@ Rails.application.routes.draw do
   namespace :api, :defaults => {:format => :json} do
     resources :users do
       get 'tags' => 'tags#index'
-      get 'tags/:name' => 'tags#show'
 
       resources :posts, only: [:index, :show]
     end

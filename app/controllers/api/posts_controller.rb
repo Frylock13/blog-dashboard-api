@@ -2,7 +2,11 @@ class API::PostsController < ApplicationController
   before_filter :set_user
 
   def index
-    @posts = @user.posts.published
+    if params[:tags]
+      @posts = @user.posts.published.find_by_sql("SELECT * FROM posts WHERE posts.tags && '{#{params[:tags]}}'")
+    else
+      @posts = @user.posts.published
+    end
   end
 
   def show
