@@ -9,7 +9,7 @@ module Dashboard
       if params[:query].present?
         @posts = current_user.posts.search(params[:query])
       else
-        @posts = current_user.posts.published.order(created_at: :desc)
+        @posts = current_user.posts
       end
     end
 
@@ -90,7 +90,7 @@ module Dashboard
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def post_params
-        params.require(:post).permit(:title, :short, :content, :tag, :image, :name)
+        params.require(:post).permit(:title, :short, :content, :tags, :image, :name)
       end
   end
 end

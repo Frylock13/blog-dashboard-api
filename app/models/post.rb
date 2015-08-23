@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
-  validates :title, :short, :content, :tag, presence: true
+  validates :title, :short, :content, :tags, presence: true
 
   belongs_to :user
 
@@ -10,10 +10,12 @@ class Post < ActiveRecord::Base
   include PgSearch
   pg_search_scope :search, against: [:title, :short]
 
-  scope :published, -> { where(status: 0) }
   scope :unpublished, -> { where(status: 1) }
   scope :archived, -> { where(status: 2) }
-  scope :tag, -> (name) { where(:tag => name) }
+  scope :tag, -> (name) { where(:tags => name) }
+
+  default_scope { order('created_at DESC') } 
+  default_scope { where(status: 0) } # published 
 
   def switch_status
     published? ? unpublished! : published! # :D

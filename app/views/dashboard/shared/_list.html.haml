@@ -15,7 +15,7 @@
       %tr
         %td= post.title
         %td= post.short
-        %td= post.tag
+        %td= post.tags
         %td= image_tag post.image.url(:thumb)
         %td
           %input{:name => "switchName", :type => "checkbox", :value => "true", :data => {:selected => "#{check_status(post.status)}", :id => "#{post.id}"}, class: "switcher", id: "switcher"}/
@@ -31,6 +31,7 @@
     $('#switcher').change(function(){
       var id = $(this).attr("data-id");
       var redirect_to = "http://" + location.host + "/dashboard/posts/" + id + "/switch_status";
+      console.log(redirect_to);
       
       window.location.replace(redirect_to);
     });

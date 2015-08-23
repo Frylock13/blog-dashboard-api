@@ -2,19 +2,11 @@ class API::PostsController < ApplicationController
   before_filter :set_user
 
   def index
-    @posts = @user.posts.published
+    @posts = @user.posts
   end
 
   def show
-    @post = @user.posts.published.find(params[:id])
-  end
-
-  def tags
-    @tags = @user.posts.published.select(:tag).uniq
-  end
-
-  def tag_posts
-    @posts = @user.posts.tag(params[:name]).published
+    @post = @user.posts.find(params[:id])
   end
 
   private

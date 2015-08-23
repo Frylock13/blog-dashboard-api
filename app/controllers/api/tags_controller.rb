@@ -6,7 +6,7 @@ class API::TagsController < ApplicationController
   end
 
   def show
-    @posts = @user.posts.tag(params[:name]).published
+    @posts = @user.posts.find_by_sql("SELECT * FROM posts WHERE posts.tags && '{#{params[:name]}}'")
   end
 
   private
