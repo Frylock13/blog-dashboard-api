@@ -9,7 +9,7 @@
   Post.create!(title: Faker::Lorem.sentence(3), 
                short: Faker::Lorem.sentence(10),
                content:  Faker::Lorem.paragraph(5),
-               tag: Faker::Lorem.word,
+               tags: Faker::Lorem.word,
                status: 1,
                created_at: Faker::Date.between(2.days.ago, Date.today),
                updated_at: Faker::Date.between(2.days.ago, Date.today),
