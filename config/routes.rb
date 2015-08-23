@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   namespace :dashboard, path: 'dashboard' do
     get '/' => 'dashboard#index'
+    get 'api' => 'static_pages#api'
 
     namespace :settings, path: 'settings' do
       get :index
