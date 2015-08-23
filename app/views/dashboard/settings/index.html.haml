@@ -1,13 +1,13 @@
 %h1 Tags
 
 - if @tags.present?
-  %p= @user.tags
+  %p= @tags
 - else
   %p No tags
 
 = form_tag dashboard_settings_set_tags_path do
   .form-group
-    = text_field_tag :tags, nil, id: "input-tags", value: @user.tags, placeholder: "Tag name"
+    = text_field_tag :tags, nil, id: "input-tags", value: @tags, placeholder: "Tag name"
   .actions
     = submit_tag "Save", class: "btn btn-success"
 

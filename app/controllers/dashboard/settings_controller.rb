@@ -1,7 +1,7 @@
 module Dashboard
   class SettingsController < ApplicationController
     def index
-      @user = current_user
+      @tags = current_user[:tags]
     end
 
     def set_tags
