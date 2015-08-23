@@ -10,7 +10,7 @@ module Dashboard
       if params[:query].present?
         @posts = current_user.posts.search(params[:query])
       else
-        @posts = current_user.posts
+        @posts = current_user.posts.published
       end
     end
 

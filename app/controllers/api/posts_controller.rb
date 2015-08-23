@@ -2,11 +2,11 @@ class API::PostsController < ApplicationController
   before_filter :set_user
 
   def index
-    @posts = @user.posts
+    @posts = @user.posts.published
   end
 
   def show
-    @post = @user.posts.find(params[:id])
+    @post = @user.posts.published.find(params[:id])
   end
 
   private

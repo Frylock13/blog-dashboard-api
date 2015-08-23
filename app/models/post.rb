@@ -10,12 +10,12 @@ class Post < ActiveRecord::Base
   include PgSearch
   pg_search_scope :search, against: [:title, :short]
 
+  scope :published, -> { where(status: 0) }
   scope :unpublished, -> { where(status: 1) }
   scope :archived, -> { where(status: 2) }
   scope :tag, -> (name) { where(:tags => name) }
 
   default_scope { order('created_at DESC') } 
-  default_scope { where(status: 0) } # published 
 
   def switch_status
     published? ? unpublished! : published! # :D
