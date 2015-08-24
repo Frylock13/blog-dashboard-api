@@ -5,7 +5,9 @@
 
 #### Posts
 Get posts list `/api/users/:name/posts`
+
 Get specific post `/api/users/:name/posts/:id`
+
 Search posts by tags `/api/users/:name/posts?tags=rails,ruby,js`
 
 #### Users
