@@ -18,19 +18,18 @@ Rails.application.routes.draw do
     end
 
     resources :posts do
+      get :switch_status
+
       collection do
         get :unpublished
         get :archived
       end
-
-      get 'switch_status'
     end
   end
 
   namespace :api, :defaults => {:format => :json} do
     resources :users do
-      get 'tags' => 'tags#index'
-
+      get :tags
       resources :posts, only: [:index, :show]
     end
   end
