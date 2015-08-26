@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include GenerateToken
+
   authenticates_with_sorcery!
 
   validates_confirmation_of :password
