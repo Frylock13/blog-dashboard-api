@@ -1,5 +1,5 @@
 class API::PostsController < ApplicationController
-  before_filter :set_user
+  before_action :authenticate
 
   def index
     if params[:tags]
@@ -11,11 +11,5 @@ class API::PostsController < ApplicationController
 
   def show
     @post = @user.posts.published.find(params[:id])
-  end
-
-  private
-
-  def set_user
-    @user = User.friendly.find(params[:user_id])
   end
 end

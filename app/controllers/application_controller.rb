@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     if request.method == 'OPTIONS'
       headers['Access-Control-Allow-Origin'] = '*'
       headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
-      headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version, Token'
+      headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version, Token, Content-Type'
       headers['Access-Control-Max-Age'] = '1728000'
 
       render :text => '', :content_type => 'text/plain'
@@ -27,5 +27,15 @@ class ApplicationController < ActionController::Base
 
   def not_authenticated
     redirect_to login_url, :alert => "First login to access this page."
+  end
+
+  def authenticate
+    api_key = request.headers['Token']
+    @user = User.where(api_key: api_key).first if api_key
+   
+    unless @user
+      head status: :unauthorized
+      return false
+    end
   end
 end

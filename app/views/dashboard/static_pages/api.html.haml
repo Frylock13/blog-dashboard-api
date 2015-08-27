@@ -1,2 +1,13 @@
-%h1 StaticPages#api
-%p Find me in app/views/static_pages/api.html.haml
+%h1 API documentation
+
+%h2 Curl
+%p curl -H "X-Api-Key: fj0293sd632bk23=sg" http://localhost:3000/api/posts
+
+%h2 Posts
+%code
+  %p Get posts list `/api/posts`
+  %p Get specific post `/api/posts/:id`
+
+%h2 Users
+%code
+  %p Tags of user(on Settings page): `/api/users/:name/tags`
