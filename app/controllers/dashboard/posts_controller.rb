@@ -83,7 +83,7 @@ module Dashboard
       end
       # Use callbacks to share common setup or constraints between actions.
       def set_post
-        @post = current_user.posts.find(params[:id])
+        @post = current_user.posts.friendly.find(params[:id])
       end
 
       def get_tags

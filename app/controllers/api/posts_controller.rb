@@ -10,6 +10,6 @@ class API::PostsController < ApplicationController
   end
 
   def show
-    @post = @user.posts.published.find(params[:id])
+    @post = @user.posts.published.friendly.find(params[:id])
   end
 end

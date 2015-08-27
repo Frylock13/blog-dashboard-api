@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825233859) do
+ActiveRecord::Schema.define(version: 20150827095714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20150825233859) do
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
     t.string   "name"
-    t.string   "slug"
     t.string   "tags"
     t.string   "api_key"
   end

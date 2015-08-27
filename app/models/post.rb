@@ -10,6 +10,9 @@ class Post < ActiveRecord::Base
   include PgSearch
   pg_search_scope :search, against: [:title, :short]
 
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   scope :published, -> { where(status: 0) }
   scope :unpublished, -> { where(status: 1) }
   scope :archived, -> { where(status: 2) }

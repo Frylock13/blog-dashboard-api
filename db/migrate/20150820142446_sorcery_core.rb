@@ -5,7 +5,6 @@ class SorceryCore < ActiveRecord::Migration
       t.string :crypted_password, :null => false
       t.string :salt,             :null => false
       t.string :name,             :uniq => true
-      t.string :slug,             :uniq => true
       t.string :tags
 
       t.timestamps
