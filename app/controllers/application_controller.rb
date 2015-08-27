@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate
-    api_key = request.headers['Token']
+    api_key = params[:api_key]
     @user = User.where(api_key: api_key).first if api_key
    
     unless @user

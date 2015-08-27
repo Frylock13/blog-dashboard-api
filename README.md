@@ -1,14 +1,14 @@
 ## README
 
 ### API
-`:name` - it's your name in system. You can find it on API page.
+`your_key` - it's your api key in system. You can find it on API page.
 
 #### Posts
-Get posts list `/api/users/:name/posts`
+Get posts list `/api/posts?api_key=your_key`
 
-Get specific post `/api/users/:name/posts/:id`
+Get specific post `/api/posts/:id?api_key=your_key`
 
-Search posts by tags `/api/users/:name/posts?tags=rails,ruby,js`
+Search posts by tags `/api/posts?api_key=your_key&tags=rails,ruby`
 
 #### Users
-Tags of user(on Settings page): `/api/users/:name/tags`
+Tags of user(on Settings page): `/api/tags?api_key=your_key`

@@ -28,9 +28,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api, :defaults => {:format => :json} do
-    resources :users do
-      get :tags
-    end
+    get 'tags' => 'settings#tags'
 
     resources :posts, only: [:index, :show]
   end

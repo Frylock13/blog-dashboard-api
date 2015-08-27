@@ -1,13 +1,22 @@
 %h1 API documentation
-
-%h2 Curl
-%p curl -H "X-Api-Key: fj0293sd632bk23=sg" http://localhost:3000/api/posts
+%p
+  Each query must contain api key. Your api key is
+  %strong= @user.api_key
 
 %h2 Posts
-%code
-  %p Get posts list `/api/posts`
-  %p Get specific post `/api/posts/:id`
+%p
+  Get posts list
+  %code `/api/posts?api_key=your_key`
 
-%h2 Users
-%code
-  %p Tags of user(on Settings page): `/api/users/:name/tags`
+%p
+  Get specific post
+  %code `/api/posts/:id?api_key=your_key`
+
+%p
+  Filter by tags
+  %code `/api/posts?api_key=your_key&tags=rails,ruby`
+
+%h2 Tags
+%p
+  Your tags(stored on settings page):
+  %code `/api/tags?api_key=your_key'
