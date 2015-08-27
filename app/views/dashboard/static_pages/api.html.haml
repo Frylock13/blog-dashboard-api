@@ -1,7 +1,10 @@
 %h1 API documentation
 %p
-  Each query must contain api key. Your api key is
+  Each query must contain api key.
+%p 
+  Your api key is
   %strong= @user.api_key
+  = link_to "Generate new.", dashboard_settings_generate_api_key_path, class: "btn btn-success"
 
 %h2 Posts
 %p

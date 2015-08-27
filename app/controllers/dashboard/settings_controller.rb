@@ -8,5 +8,10 @@ module Dashboard
       current_user.update_attribute(:tags, params[:tags])
       redirect_to :back
     end
+
+    def generate_api_key
+      current_user.generate_api_key
+      redirect_to :back
+    end
   end
 end

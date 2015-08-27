@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
     namespace :settings, path: 'settings' do
       get :index
+      get :generate_api_key
       post :set_tags
     end
 
