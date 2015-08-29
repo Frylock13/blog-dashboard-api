@@ -8,7 +8,7 @@
     = csrf_meta_tags
   %body
     .container-fluid
-      .row{class: "#{params[:controller]}"}
+      .row{class: "#{params[:action]}"}
         = render "dashboard/shared/header" if current_user
         = render "shared/header"           if !current_user
 

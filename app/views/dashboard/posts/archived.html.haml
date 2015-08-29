@@ -1,6 +1,8 @@
 = render 'dashboard/shared/nav_list'
 
-%h1 Listing archived posts
+%h1
+  Listing archived posts
+  = link_to "Destroy all", destroy_all_archived_dashboard_posts_path, class: "btn btn-danger"
 
 = render 'dashboard/shared/list', collection: @dashboard_posts
 

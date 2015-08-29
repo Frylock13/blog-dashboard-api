@@ -22,6 +22,11 @@ module Dashboard
       @posts = current_user.posts.archived
     end
 
+    def destroy_all_archived
+      current_user.posts.archived.destroy_all
+      redirect_to :back
+    end
+
     def switch_status
       @post = Post.find(params[:post_id])
       @post.switch_status

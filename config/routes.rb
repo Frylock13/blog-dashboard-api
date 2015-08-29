@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       collection do
         get :unpublished
         get :archived
+        get :destroy_all_archived
       end
     end
   end

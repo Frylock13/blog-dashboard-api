@@ -1,11 +1,10 @@
-%table
+%table.posts
   %thead
     %tr
       %th Title
       %th Short
       %th Tags
-      %th Image
-      %th Status
+      %th Published
       %th
       %th
       %th
@@ -16,12 +15,11 @@
         %td= post.title
         %td= post.short
         %td= post.tags.join(",")
-        %td= image_tag post.image.url(:thumb)
         %td
           %input{:name => "switchName", :type => "checkbox", :value => "true", :data => {:selected => "#{check_status(post.status)}", :id => "#{post.id}"}, class: "switcher", id: "switcher"}/
-        %td= link_to 'Show', dashboard_post_path(id: post)
-        %td= link_to 'Edit', edit_dashboard_post_path(post)
-        %td= link_to 'Destroy', dashboard_post_path(id: post), :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Show', dashboard_post_path(id: post), class: "btn btn-info"
+        %td= link_to 'Edit', edit_dashboard_post_path(post), class: "btn btn-warning"
+        %td= link_to 'Destroy', dashboard_post_path(id: post), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-danger"
 
 :javascript
   $(function () {
