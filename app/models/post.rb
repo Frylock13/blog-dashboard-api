@@ -25,7 +25,8 @@ class Post < ActiveRecord::Base
   end
 
   #generate eng url if russian title
-  def generate_url(original_title) 
+  def generate_url(original_title)
+    original_title = original_title.split(' ').join('-') # kinda qwe-asd-fdg
     update_attribute(:slug, Russian.translit(original_title))
   end
 
