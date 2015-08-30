@@ -72,7 +72,7 @@ module Dashboard
     # PATCH/PUT /dashboard/posts/1.json
     def update
       if @post.update(post_params) && @post.update_tags(@tags_array)
-        redirect_to dashboard_posts_path
+        redirect_to dashboard_post_path(@post)
       else
         redirect_to :back
       end
