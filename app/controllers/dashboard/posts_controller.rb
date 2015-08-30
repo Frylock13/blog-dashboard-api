@@ -30,8 +30,15 @@ module Dashboard
     def switch_status
       @post = Post.find(params[:post_id])
       @post.switch_status
-      
+
       redirect_to :back
+    end
+
+    def generate_url
+      @post = Post.friendly.find(params[:post_id])
+      @post.generate_url(@post.title)
+
+      redirect_to dashboard_post_path(id: @post.id)
     end
 
     # GET /dashboard/posts/1
@@ -83,25 +90,25 @@ module Dashboard
 
     private
 
-      def json_request?
-        request.format.symbol == :json
-      end
-      # Use callbacks to share common setup or constraints between actions.
-      def set_post
-        @post = current_user.posts.friendly.find(params[:id])
-      end
+    def json_request?
+      request.format.symbol == :json
+    end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_post
+      @post = current_user.posts.friendly.find(params[:id])
+    end
 
-      def get_tags
-        @tags = Post.select(:tag).uniq
-      end
+    def get_tags
+      @tags = Post.select(:tag).uniq
+    end
 
-      # Never trust parameters from the scary internet, only allow the white list through.
-      def post_params
-        params.require(:post).permit(:title, :short, :content, :image, :name)
-      end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def post_params
+      params.require(:post).permit(:title, :short, :content, :image, :name)
+    end
 
-      def tags_array
-        @tags_array = params[:post][:tags].split(",")
-      end
+    def tags_array
+      @tags_array = params[:post][:tags].split(',')
+    end
   end
 end

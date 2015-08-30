@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 6.times do
-  Post.create!(title: Faker::Lorem.sentence(3), 
+  Post.create!(title: Faker::Lorem.sentence(3),
                short: Faker::Lorem.sentence(10),
                content:  Faker::Lorem.paragraph(5),
                tags: Faker::Lorem.word,

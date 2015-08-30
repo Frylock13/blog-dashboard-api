@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
     resources :posts do
       get :switch_status
+      get :generate_url
 
       collection do
         get :unpublished
@@ -29,7 +30,7 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :api, :defaults => {:format => :json} do
+  namespace :api, defaults: { format: :json } do
     get 'tags' => 'settings#tags'
 
     resources :posts, only: [:index, :show]

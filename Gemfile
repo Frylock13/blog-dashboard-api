@@ -10,7 +10,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'faker'
-gem "compass-rails", github: "Compass/compass-rails", branch: "master"
+gem 'compass-rails', github: 'Compass/compass-rails', branch: 'master'
 gem 'unicorn'
 gem 'capistrano', github: 'capistrano/capistrano', ref: '96a16'
 gem 'bootstrap-sass', '~> 3.3.5'
@@ -20,9 +20,10 @@ gem 'paperclip'
 gem 'pg_search'
 gem 'chosen-rails'
 gem 'meta_request'
-gem "sorcery"
+gem 'sorcery'
 gem 'friendly_id', '~> 5.1.0'
-gem "selectize-rails"
+gem 'selectize-rails'
+gem 'russian'
 
 group :development, :test do
   gem 'byebug'
@@ -30,10 +31,9 @@ group :development, :test do
   gem 'spring'
 
   gem 'better_errors'
-  gem "binding_of_caller"
+  gem 'binding_of_caller'
 
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl'
   gem 'capybara'
 end
-

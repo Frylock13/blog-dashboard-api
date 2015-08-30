@@ -1,5 +1,8 @@
 %p#notice= notice
-
+%p
+  %b Url:
+  = @post.slug
+  = link_to "Generate url", dashboard_post_generate_url_path(post_id: @post.id), class: "btn btn-success"
 %p
   %b Title:
   = @post.title
@@ -10,11 +13,8 @@
   %b Content:
   = raw(@post.content)
 %p
-  %b Topic:
+  %b Tags:
   = @post.tags
-%p
-  %b Image:
-  = image_tag @post.image.url(:medium)
 
 = link_to 'Edit', edit_dashboard_post_path(@post)
 \|
