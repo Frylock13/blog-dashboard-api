@@ -26,8 +26,10 @@ class Post < ActiveRecord::Base
 
   #generate eng url if russian title
   def generate_url(original_title)
-    original_title = original_title.split(' ').join('-') # kinda qwe-asd-fdg
-    update_attribute(:slug, Russian.translit(original_title))
+    milled_title = Russian.translit(original_title.split(' ').join('-')) # split to '*-*-*' template and translit
+    finished_title = milled_title.gsub!(/\W+/, '-') # remove all symbols except '-'
+
+    update_attribute(:slug, finished_title)
   end
 
   def update_tags(tags)
