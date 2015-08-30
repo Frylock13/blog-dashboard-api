@@ -16,6 +16,5 @@
   %b Tags:
   = @post.tags
 
-= link_to 'Edit', edit_dashboard_post_path(@post)
-\|
-= link_to 'Back', dashboard_posts_path
+= link_to 'Edit', edit_dashboard_post_path(@post), class: "btn btn-warning"
+= link_to 'Back', dashboard_posts_path, class: "btn btn-default"
