@@ -1,8 +1,5 @@
 = render 'dashboard/shared/nav_list'
 
-.row
-  %h1.col-sm-10 Listing posts
-  .col-sm-2
-    = link_to "Import to CSV", dashboard_posts_path(format: "csv"), class: 'btn btn-info'
+%h1 Listing posts
 
 = render 'list', collection: @posts

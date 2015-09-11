@@ -13,18 +13,19 @@ module Dashboard
         @posts = current_user.posts.published
       end
 
-      respond_to do |format|
-        format.html
-        format.csv { send_data @posts.to_csv }
-      end
+      export_to_csv
     end
 
     def unpublished
       @posts = current_user.posts.unpublished
+
+      export_to_csv
     end
 
     def archived
       @posts = current_user.posts.archived
+
+      export_to_csv
     end
 
     def destroy_all_archived
@@ -95,25 +96,32 @@ module Dashboard
 
     private
 
-    def json_request?
-      request.format.symbol == :json
-    end
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = current_user.posts.friendly.find(params[:id])
-    end
+      def json_request?
+        request.format.symbol == :json
+      end
+      # Use callbacks to share common setup or constraints between actions.
+      def set_post
+        @post = current_user.posts.friendly.find(params[:id])
+      end
 
-    def get_tags
-      @tags = Post.select(:tag).uniq
-    end
+      def get_tags
+        @tags = Post.select(:tag).uniq
+      end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def post_params
-      params.require(:post).permit(:title, :short, :content, :image, :name)
-    end
+      # Never trust parameters from the scary internet, only allow the white list through.
+      def post_params
+        params.require(:post).permit(:title, :short, :content, :image, :name)
+      end
 
-    def tags_array
-      @tags_array = params[:post][:tags].split(',')
-    end
+      def tags_array
+        @tags_array = params[:post][:tags].split(',')
+      end
+
+      def export_to_csv
+        respond_to do |format|
+          format.html
+          format.csv { send_data @posts.to_csv }
+        end
+      end
   end
 end

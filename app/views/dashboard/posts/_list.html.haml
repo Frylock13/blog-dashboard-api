@@ -24,6 +24,7 @@
 %br
 
 = link_to 'New Post', new_dashboard_post_path, class: "btn btn-success"
+= link_to "Import to CSV", get_link_for_export("csv"), class: 'btn btn-info'
 
 :javascript
   $(function () {
