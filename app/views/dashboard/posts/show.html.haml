@@ -14,7 +14,7 @@
   = raw(@post.content)
 %p
   %b Tags:
-  = @post.tags
+  = @post.tags.join(",")
 
 = link_to 'Edit', edit_dashboard_post_path(@post), class: "btn btn-warning"
 = link_to 'Back', dashboard_posts_path, class: "btn btn-default"

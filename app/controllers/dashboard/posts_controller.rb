@@ -12,6 +12,11 @@ module Dashboard
       else
         @posts = current_user.posts.published
       end
+
+      respond_to do |format|
+        format.html
+        format.csv { send_data @posts.to_csv }
+      end
     end
 
     def unpublished
