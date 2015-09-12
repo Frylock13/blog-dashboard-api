@@ -5,6 +5,10 @@ module GenerateToken
     before_create :generate_token
   end
 
+  def generate_api_key
+    update_attribute(:api_key, SecureRandom.urlsafe_base64(nil, false))
+  end
+
   protected
 
   def generate_token

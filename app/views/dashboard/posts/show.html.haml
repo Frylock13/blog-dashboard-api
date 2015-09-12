@@ -3,6 +3,7 @@
   %b Url:
   = @post.slug
   = link_to "Generate url", dashboard_post_generate_url_path(post_id: @post.id), class: "btn btn-success"
+= image_tag @post.image(:medium)
 %p
   %b Title:
   = @post.title

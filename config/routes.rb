@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get :index
       get :generate_api_key
       post :set_tags
+      patch :upload_avatar
     end
 
     resources :posts do

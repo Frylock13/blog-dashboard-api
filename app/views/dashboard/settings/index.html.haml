@@ -1,15 +1,31 @@
-%h1 Tags
+.settings
+  %h1 Settings
 
-- if @tags.present?
-  %p= @tags
-- else
-  %p No tags
+  .avatar
+    %h2 Avatar
 
-= form_tag dashboard_settings_set_tags_path do
-  .form-group
-    = text_field_tag :tags, nil, id: "input-tags", value: @tags, placeholder: "Tag name"
-  .actions
-    = submit_tag "Save", class: "btn btn-success"
+    = image_tag current_user.image(:medium), class: 'img-rounded'
+
+    = form_for current_user, :url => { :action => 'upload_avatar' } do |f|
+      .form-group
+        = f.label :image
+        = f.file_field :image, class: 'form-control'
+      .form-group
+        = f.submit 'Upload', class: 'btn btn-success'
+
+  .tags
+    %h2 Tags
+
+    - if @tags.present?
+      %p= @tags
+    - else
+      %p No tags
+
+    = form_tag dashboard_settings_set_tags_path do
+      .form-group
+        = text_field_tag :tags, nil, id: "input-tags", value: @tags, placeholder: "Tag name"
+      .actions
+        = submit_tag "Save", class: "btn btn-success"
 
 :javascript
   $('#input-tags').selectize({

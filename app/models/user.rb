@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include GenerateToken
+  include ImageUploadSettings
 
   authenticates_with_sorcery!
 
@@ -10,8 +11,4 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
 
   has_many :posts
-
-  def generate_api_key
-    update_attribute(:api_key, SecureRandom.urlsafe_base64(nil, false))
-  end
 end
