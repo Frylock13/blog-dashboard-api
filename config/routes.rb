@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     get 'tags' => 'settings#tags'
+    get 'avatar' => 'settings#avatar'
 
     resources :posts, only: [:index, :show]
   end

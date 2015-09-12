@@ -2,7 +2,10 @@ class API::SettingsController < ApplicationController
   before_action :authenticate
 
   def tags
-    user = User.first
-    @tags = user[:tags].split(',')
+    @tags = @user[:tags].split(',')
+  end
+
+  def avatar
+    @avatar = @user.image(:medium)
   end
 end
