@@ -1,16 +1,17 @@
 class Post < ActiveRecord::Base
-  has_attached_file :image, styles: { medium: '300x300>', thumb: '100x100>' }, default_url: '/images/:style/missing.png'
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
-  validates :title, :short, :content, presence: true
+  include ConvertToFormat
+  include PgSearch
+  include ImageUploadSettings
+  extend FriendlyId
 
   belongs_to :user
 
+  validates :title, :short, :content, presence: true
+
   enum status: %i(published unpublished archived)
 
-  include PgSearch
   pg_search_scope :search, against: [:title, :short]
 
-  extend FriendlyId
   friendly_id :title, use: :slugged
 
   scope :published, -> { where(status: 0) }
@@ -34,14 +35,5 @@ class Post < ActiveRecord::Base
 
   def update_tags(tags)
     update_attribute(:tags, tags)
-  end
-
-  def self.to_csv(options = {})
-    CSV.generate(options) do |csv|
-      csv << column_names
-      all.each do |product|
-        csv << product.attributes.values_at(*column_names)
-      end
-    end
   end
 end
