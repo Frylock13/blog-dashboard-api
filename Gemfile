@@ -26,6 +26,7 @@ gem 'selectize-rails'
 gem 'russian'
 
 group :development, :test do
+  gem 'rubocop'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'

@@ -9,11 +9,11 @@ module DashboardHelper
 
   def get_link_for_export(format)
     case params[:action]
-    when "index"
+    when 'index'
       dashboard_posts_path(format: format)
-    when "unpublished"
+    when 'unpublished'
       unpublished_dashboard_posts_path(format: format)
-    when "archived"
+    when 'archived'
       archived_dashboard_posts_path(format: format)
     end
   end

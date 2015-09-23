@@ -18,7 +18,6 @@ module Dashboard
       @user = User.find(current_user.id)
       @user.update_attribute(:image, params[:user][:image])
       redirect_to :back
-
     end
   end
 
