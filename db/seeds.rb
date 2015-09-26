@@ -5,6 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+User.create(email: "demo", password: "demo", password_confirmation: "demo")
+
+demo_user = User.find_by(email: "demo")
+
 6.times do
   Post.create!(title: Faker::Lorem.sentence(3),
                short: Faker::Lorem.sentence(10),
@@ -13,6 +17,6 @@
                status: 1,
                created_at: Faker::Date.between(2.days.ago, Date.today),
                updated_at: Faker::Date.between(2.days.ago, Date.today),
-               user_id: 1
+               user_id: demo_user.id
                )
 end

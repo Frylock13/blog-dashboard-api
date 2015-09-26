@@ -7,9 +7,6 @@
           - for message in @user.errors.full_messages
             %li= message
     .form-group
-      = f.label :name
-      = f.text_field :name, class: "form-control", placeholder: "name for your future API"
-    .form-group
       = f.label :email
       = f.text_field :email, class: "form-control", type: "email"
     .form-group
