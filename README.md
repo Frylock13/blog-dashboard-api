@@ -18,3 +18,5 @@ Search posts by tags `/api/posts?api_key=your_key&tags=rails,ruby`
 
 #### Users
 Tags of user(on Settings page): `/api/tags?api_key=your_key`
+
+Avatar: `/api/avatar?api_key=your_key`

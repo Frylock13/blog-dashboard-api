@@ -9,17 +9,21 @@
 %h2 Posts
 %p
   Get posts list
-  %code= "`/api/posts?api_key=#{@user.api_key}`"
+  %code= "/api/posts?api_key=#{@user.api_key}"
 
 %p
   Get specific post
-  %code= "`/api/posts/:id?api_key=#{@user.api_key}`"
+  %code= "/api/posts/:id?api_key=#{@user.api_key}"
 
 %p
   Filter by tags
-  %code= "`/api/posts?api_key=#{@user.api_key}&tags=rails,ruby`"
+  %code= "/api/posts?api_key=#{@user.api_key}&tags=rails,ruby"
 
-%h2 Tags
+%h2 User settings
 %p
-  Your tags(stored on settings page):
-  %code= "`/api/tags?api_key=#{@user.api_key}'"
+  Tags(stored on settings page):
+  %code= "/api/tags?api_key=#{@user.api_key}"
+
+%p
+  Avatar img:
+  %code= "/api/avatar?api_key=#{@user.api_key}"
