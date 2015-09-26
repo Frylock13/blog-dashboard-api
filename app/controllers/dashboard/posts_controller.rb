@@ -87,11 +87,8 @@ module Dashboard
     # DELETE /dashboard/posts/1
     # DELETE /dashboard/posts/1.json
     def destroy
-      if @post.archived!
-        redirect_to dashboard_posts_path
-      else
-        redirect_to :back
-      end
+      @post.archived!
+      redirect_to :back
     end
 
     private
