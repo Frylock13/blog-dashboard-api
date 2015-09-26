@@ -19,8 +19,9 @@
           %input{:name => "switchName", :type => "checkbox", :value => "true", :data => {:selected => "#{check_status(post.status)}", :id => "#{post.id}"}, class: "switcher", id: "switcher"}/
         %td= link_to 'Show', dashboard_post_path(id: post), class: "btn btn-info"
         %td= link_to 'Edit', edit_dashboard_post_path(post), class: "btn btn-warning"
-        %td= link_to 'Destroy', dashboard_post_path(id: post), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-danger"
 
+        - unless params[:action] == "archived"
+          %td= link_to 'To archive', dashboard_post_path(id: post), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-danger"
 %br
 
 = link_to 'New Post', new_dashboard_post_path, class: "btn btn-success"

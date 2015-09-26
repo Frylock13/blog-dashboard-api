@@ -2,6 +2,6 @@
 
 %h1
   Listing archived posts
-  = link_to "Destroy all", destroy_all_archived_dashboard_posts_path, class: "btn btn-danger"
+  = link_to "Destroy all", destroy_all_archived_dashboard_posts_path, :data => { :confirm => 'Are you sure?' }, class: "btn btn-danger"
 
 = render 'list', collection: @dashboard_posts
