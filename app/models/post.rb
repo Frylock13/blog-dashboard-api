@@ -14,9 +14,6 @@ class Post < ActiveRecord::Base
 
   friendly_id :title, use: :slugged
 
-  scope :published, -> { where(status: 0) }
-  scope :unpublished, -> { where(status: 1) }
-  scope :archived, -> { where(status: 2) }
   scope :tag, -> (name) { where(tags: name) }
 
   default_scope { order('created_at DESC') }
@@ -25,7 +22,7 @@ class Post < ActiveRecord::Base
     published? ? unpublished! : published! # :D
   end
 
-  # generate eng url if russian title
+  # generate eng to russian url
   def generate_url(original_title)
     milled_title = Russian.translit(original_title.split(' ').join('-')).downcase # split to '*-*-*' template and translit
     finished_title = milled_title.gsub!(/\W+/, '-') # remove all symbols except '-'
@@ -35,5 +32,9 @@ class Post < ActiveRecord::Base
 
   def update_tags(tags)
     update_attribute(:tags, tags)
+  end
+
+  def reset_publication_date
+    self.update_attribute(:created_at, DateTime.now)
   end
 end
