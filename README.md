@@ -7,7 +7,7 @@
 You can seed a testing data on your local project. Enter `rake db:seed` in a terminal for create of demo user and/or seed its posts. 
 
 ### API
-`your_key` - it's your api key in the system. You can find it on the API page.
+`your_key` - it's your api key. You can find it on the API page.
 
 #### Posts
 Get hash of posts `/api/posts?api_key=your_key`
