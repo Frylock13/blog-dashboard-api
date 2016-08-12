@@ -1,9 +1,6 @@
 module Dashboard
   class PostsController < ApplicationController
-    before_action :set_post, only: [:show, :edit, :update, :destroy]
-    before_action :get_tags, only: [:new, :edit]
-    before_action :tags_array, only: [:update, :create]
-
+    
     def index
       if params[:query].present?
         @posts = current_user.posts.search(params[:query])
@@ -15,20 +12,24 @@ module Dashboard
     end
 
     def show
+      set_post
     end
 
     def new
+      get_uniq_tags
       @post = Post.new
     end
 
     def edit
+      get_uniq_tags
+      set_post
     end
 
     def create
       @post = current_user.posts.new(post_params)
 
       if @post.save!
-        @post.update_tags(@tags_array)
+        @post.update_tags(perform_tags_array)
         redirect_to unpublished_dashboard_posts_path
       else
         redirect_to :back
@@ -36,7 +37,8 @@ module Dashboard
     end
 
     def update
-      if @post.update(post_params) && @post.update_tags(@tags_array)
+      set_post
+      if @post.update(post_params) && @post.update_tags(perform_tags_array)
         redirect_to dashboard_post_path(@post)
       else
         redirect_to :back
@@ -44,6 +46,7 @@ module Dashboard
     end
 
     def destroy
+      set_post
       @post.archived!
       redirect_to :back
     end
@@ -97,7 +100,7 @@ module Dashboard
       @post = current_user.posts.friendly.find(params[:id])
     end
 
-    def get_tags
+    def get_uniq_tags
       @tags = Post.select(:tag).uniq
     end
 
@@ -105,8 +108,8 @@ module Dashboard
       params.require(:post).permit(:title, :short, :content, :image, :name)
     end
 
-    def tags_array
-      @tags_array = params[:post][:tags].split(',')
+    def perform_tags_array
+      params[:post][:tags].split(',')
     end
 
     def export_to_csv
