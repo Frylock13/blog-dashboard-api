@@ -2,8 +2,8 @@
 %p
   %b Url:
   = @post.slug
-  = link_to "Generate url", dashboard_post_generate_url_path(post_id: @post.id), class: "btn btn-success"
-  = link_to "Reset the publication date", dashboard_post_reset_publication_date_path(post_id: @post.id), class: "btn btn-success"
+  = link_to "Generate url", dashboard_post_generate_url_path(post_id: @post.id), method: :put, class: "btn btn-success"
+  = link_to "Reset the publication date", dashboard_post_reset_publication_date_path(post_id: @post.id), method: :put, class: "btn btn-success"
 = image_tag @post.image(:medium)
 %p
   %b Title:
@@ -17,6 +17,9 @@
 %p
   %b Tags:
   = @post.tags.join(",")
+%p
+  %b Created at:
+  = @post.created_at
 
 = link_to 'Edit', edit_dashboard_post_path(@post), class: "btn btn-warning"
 = link_to 'Back', dashboard_posts_path, class: "btn btn-default"

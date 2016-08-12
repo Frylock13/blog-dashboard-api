@@ -21,8 +21,8 @@ Rails.application.routes.draw do
 
     resources :posts do
       get :switch_status
-      get :generate_url
-      get :reset_publication_date
+      put :generate_url
+      put :reset_publication_date
 
       collection do
         get :unpublished

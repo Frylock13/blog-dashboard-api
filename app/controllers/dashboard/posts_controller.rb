@@ -53,13 +53,11 @@ module Dashboard
 
     def unpublished
       @posts = current_user.posts.unpublished
-
       export_to_csv
     end
 
     def archived
       @posts = current_user.posts.archived
-
       export_to_csv
     end
 
@@ -77,7 +75,7 @@ module Dashboard
     def generate_url
       find_post_with_post_id
       @post.generate_url(@post.title)
-      redirect_to dashboard_posts_path(id: @post.id)
+      redirect_to dashboard_post_path(id: @post.slug)
     end
 
     def reset_publication_date
