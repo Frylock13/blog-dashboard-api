@@ -2,6 +2,7 @@
 
 ### Demo
 [Demo](http://apis.expaenergy.lclients.ru/login)
+[Video](https://drive.google.com/open?id=0B1wGmGedDY1dQlowRkN6ZVktQms)
 *demo:demo*
 
 You can seed a testing data on your local project. Enter `rake db:seed` in a terminal for create of demo user and/or seed its posts. 
